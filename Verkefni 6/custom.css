@@ -1,0 +1,853 @@
+:root,
+:host {
+  --footer-bg-color: var(--pico-color-cyan-75);
+  --footer-text-color: #3a2f2f;
+}
+
+footer {
+  background-color: #6f7a5c;
+  color: var(--footer-text-color);
+  padding: 2rem 0;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]),
+  :host(:not([data-theme])) {
+    color-scheme: dark;
+    --footer-bg-color: var(--pico-color-cyan-700);
+    --footer-text-color: var(--pico-color-cyan-50);
+  }
+}
+
+body {
+  background-color: #f1e8e2;
+}
+
+:root,
+html {
+  scroll-behavior: smooth;
+}
+
+/* labels inline */
+.inlineLabel label {
+  display: inline;
+}
+
+/* accessible but visually hidden thead */
+thead {
+  border: none;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* table as stacked blocks on small screens */
+tr {
+  display: block;
+  border-bottom: 1px solid var(--pico-color);
+}
+
+tr:nth-child(odd) td {
+  background-color: var(--footer-bg-color);
+}
+
+td {
+  display: block;
+  text-align: right;
+}
+
+td::before {
+  content: attr(data-label);
+  float: left;
+}
+
+@media (min-width: 37.5rem) {
+  thead {
+    display: table-header-group;
+    position: relative;
+    width: auto;
+    overflow: visible;
+  }
+
+  td {
+    display: table-cell;
+    text-align: left;
+  }
+
+  td::before {
+    content: none;
+    clear: both;
+  }
+
+  tr {
+    display: table-row;
+    border-bottom: none;
+  }
+}
+
+/* form */
+fieldset {
+  border: 1px solid #6f7a5c;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+fieldset legend {
+  padding: 0 0.5rem;
+}
+
+/* banner */
+.banner {
+  width: 100%;
+  padding: 5px 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  margin-top: -20px;
+  z-index: 5;
+}
+
+.banner-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  animation: fadeSlide 3s ease-in-out infinite alternate;
+}
+
+@keyframes fadeSlide {
+  0% {
+    opacity: 0.2;
+    transform: translateY(-300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  transform-origin: center;
+  animation: spin 1.5s ease-in-out infinite;
+}
+
+
+
+.loader-bg svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* horizontal animation on larger screens */
+@media screen and (min-width: 960px) {
+  @keyframes fadeSlide {
+    0% {
+      opacity: 0.2;
+      transform: translateX(900px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .banner-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* fullwidth images */
+.fullwidth {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.fullwidth picture,
+.fullwidth img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* logo */
+.logo svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* grid layout */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.left-col article {
+  margin-bottom: 1.5rem;
+}
+
+.right-col article {
+  height: 100%;
+}
+
+/* nav layout (if you use nav > section) */
+nav section {
+  display: flex;
+  align-items: center;
+}
+
+nav section .forsida {
+  margin-left: auto;
+
+}
+
+/* generic slide animation (for the w3-content slideshow) */
+.slide {
+  position: relative;
+  text-align: center;
+  margin-bottom: 1rem;
+  animation: fade 1s ease-in-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* w3-content slideshow container */
+.w3-content {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  margin: 2rem auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* captions for that slideshow */
+.caption {
+  position: static;
+  background: none;
+  color: #333;
+  font-size: 1.1rem;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+/* HEADER – cleaned */
+header {
+  width: 100%;
+  display: block;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* optional name block */
+.myNames {
+  display: none;
+  text-align: center;
+  font-size: 1.4rem;
+  margin-top: 10px;
+}
+
+/* your separate header slideshow (header-slideshow) */
+.header-slideshow .header-slide {
+  display: none;
+}
+
+.header-slideshow img {
+  width: 100%;
+  display: block;
+}
+
+/* captions (shared) */
+.caption {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  color: #333;
+}
+
+
+header {
+    text-align: center;
+    padding: 2rem 0 1rem;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.main-nav a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #6f7a5c;       /* Til baka takki */
+}
+
+.main-nav a.button {
+    padding: 0.4rem 1rem;
+    background: #6f7a5c;    /* Texti í header */
+    color: white;
+    border-radius: 6px;
+}
+
+
+
+.header-slide {
+    display: none;
+    text-align: center;
+}
+
+.header-caption {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+}
+
+
+.header-slide {
+    display: none;
+    text-align: center;
+    animation: fade 1.2s ease-in-out;
+}
+
+.header-caption {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #2b2b2b; 
+   
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.topnav {
+    background-color: none;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+
+
+
+.topnav a {
+    color: #6f7a5c;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.topnav .button {
+    background-color: white;
+    color: #6f7a5c;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.topmenu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+
+header.container {
+    text-align: center;
+    padding: 2rem 0 1rem;
+}
+
+header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #3a2f2f;      /* same dark color as links */
+    letter-spacing: 1px;
+    margin: 0 0 1rem;
+}
+
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px; /* space between images */
+}
+
+
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image-grid img {
+  width: 100%;
+  height: 250px;      /* choose the height you want */
+  object-fit: cover;  /* crops nicely without distortion */
+  border-radius: 6px; /* optional */
+}
+
+.top-header {
+  max-width: 1200px;   /* keeps it nicely centered on large screens */
+  margin: 0 auto;      /* centers the whole block */
+  text-align: center;  /* centers the text inside */
+}
+
+
+.header-center {
+  max-width: 1200px;   /* keeps it nicely centered on large screens */
+  margin: 0 auto;      /* centers the whole block */
+  text-align: center;  /* centers the title + nav */
+  padding: 1rem 0;     /* optional spacing */
+}
+
+
+
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  color: white;
+}
+
+.overlay h4 {
+  margin: 0 0 10px 0;
+}
+
+.overlay p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 25px;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0)
+  );
+  color: white;
+  text-align: center;        /* centers all text */
+}
+
+.overlay h4 {
+  margin: 0 0 12px 0;
+  font-size: 1.6rem;         /* bigger title */
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0,0,0,0.9);
+}
+
+.overlay p {
+  margin: 0;
+  font-size: 1.1rem;         /* bigger paragraph text */
+  line-height: 1.4;
+  text-shadow: 0 0 8px rgba(0,0,0,0.9);
+}
+
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 20px 10px 20px; /* top | right | bottom | left */
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0)
+  );
+  color: white;
+  text-align: center;
+}
+
+.overlay h4 {
+  margin: 0 0 8px 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0,0,0,0.9);
+}
+
+.overlay p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  text-shadow: 0 0 8px rgba(0,0,0,0.9);
+}
+
+
+
+.doctor-card {
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.doctor-card {
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.doctor-image {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 20px 20px 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0)
+  );
+  color: white;
+  text-align: center;
+}
+
+.overlay p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  text-shadow: 0 0 8px rgba(0,0,0,0.9);
+}
+
+.doctor-name {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+
+.doctor-card {
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.doctor-image {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 20px 20px 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0)
+  );
+  color: white;
+  text-align: center;
+}
+
+.doctor-card {
+  width: 100%;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.doctor-image {
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 20px 20px 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0)
+  );
+  color: white;
+  text-align: center;
+}
+
+.overlay p {
+  margin: 0;
+  font-size: 1.25rem;          /* bigger */
+  line-height: 1.45;           /* more spacing */
+  font-weight: 600;            /* thicker */
+  font-family: "Arial", sans-serif;  /* clearer font */
+  text-shadow: 0 0 12px rgba(0,0,0,1); /* stronger contrast */
+}
+
+.doctor-name {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+
+.doctor-name {
+  margin-top: 10px;
+  font-size: 1.8rem;           /* bigger */
+  font-weight: 700;            /* bold */
+  font-family: "Arial", sans-serif;
+}
+
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 6px 15px 12px 15px; /* much smaller */
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.15),
+    rgba(0,0,0,0)
+  );
+  color: white;
+  text-align: center;
+}
+
+.overlay p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9); /* Stjórnar lit á texta á myndum (Verkefni 6.3) */
+  text-shadow: 0 0 6px rgba(0,0,0,0.8); 
+}
+
+
+.doctor-name {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333; /* Stjórnar lit á texta a nöfnum undir myndir (Verkefni 6.3) */
+}
+
+
+.overlay p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+  font-weight: 500;
+  color: rgba(255, 245, 230, 0.95); /* warm, readable white */
+  text-shadow: 0 0 6px rgba(0,0,0,0.7);
+}
+
+
+
+
+.overlay p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+  font-weight: 500;
+  color: rgba(225, 240, 255, 0.95); /* cool, clean, readable */
+  text-shadow: 0 0 6px rgba(0,0,0,0.75);
+}
+
+.doctor-name {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2a2f33; /* cool dark gray */
+}
+
+/* Global font for a cooler, modern look */
+body {
+  font-family: "Inter", "Roboto", sans-serif;
+}
+
+/* Overlay text */
+.overlay p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 400; /* lighter, cleaner */
+  letter-spacing: 0.2px; /* subtle spacing for cool tone */
+  color: rgba(225, 240, 255, 0.95);
+  text-shadow: 0 0 6px rgba(0,0,0,0.75);
+}
+
+/* Name under the image */
+.doctor-name {
+  margin-top: 10px;
+  font-size: 1.55rem;
+  font-weight: 600; /* slightly lighter than bold */
+  letter-spacing: 0.3px;
+  color: #2a2f33;
+}
+
+
+
+
+input[type="submit"] {
+  background-color:#6f7a5c !important;  /* Stjórnar color á  skrá á viðburð button (Verkefni 6/Main page) */
+  color: #ffffff !important;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+
+summary[role="button"].outline {
+  background-color: #6f7a5c;   /* Ræður color í bakgrunni froðleika um spitala */
+  color: #2b2b2b; /* Stjórnar color á textum í fróðleika um spítala (verkefni 6) */
+  border-color:#6f7a5c;
+}
+
+
+/* Change the light-blue flash when opening a <details> section */
+summary[role="button"].outline:focus,
+summary[role="button"].outline:focus-visible,
+summary[role="button"].outline:active {
+  background-color: #6f7a5c;  
+  color: rgb(199, 19, 148); /* Stjórnar lít á nafni spitala þegar þú opnar það í froðleik um spitala  */ 
+  outline: none;
+  box-shadow: none;
+}
+
+/* Change the color during the open animation */
+details[open] > summary[role="button"].outline {
+  background-color: #6f7a5c;   
+  color: rgb(199, 19, 148); /* Stjórnar lít á nafni spitala þegar þú opnar það í froðleik um spitala  */ 
+  border-color: #b81a1f; /* Stjólrnar color flash þegar þú opnar froðleika um spitala*/
+}
+
+/* Flash animation (Froðleikur um spitala) */
+@keyframes flash-open {
+  0% {
+    background-color: #11066c;   
+    color: white;
+  }
+  100% {
+    background-color: inherit;   
+    color: inherit;
+  }
+}
+
+/* Stjórnar hversu lengi flash animation er í gangi (Froðleikur um spitala)*/
+details[open] > summary[role="button"].outline {
+  animation: flash-open 0.25s ease-out;
+}
+
+
+.copy {
+  color: #2f373a;   /* Stjórnar color á © GÓÐGERÐAFÉLAG BARNASPITALANS 2026 */
+  text-align: center;
+}
+
+
+/* SHRINK HEADER */
+header.verkefni6-header {
+  padding: 0.8rem 0;      /* was 2rem → much smaller */
+}
+
+header.verkefni6-header h1 {
+  font-size: 1.6rem;      /* was 2.4rem */
+  margin-bottom: 0.4rem;  /* was 1rem */
+}
+
+header.verkefni6-header .main-nav {
+  gap: 1.2rem;            /* was 2.5rem */
+}
+
+header.verkefni6-header .main-nav a {
+  font-size: 0.95rem;     /* slightly smaller text */
+}
+
+
